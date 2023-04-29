@@ -1,0 +1,28 @@
+vector<int> candyStore(int candies[], int N, int K)
+    {
+        sort(candies, candies+N);
+        int min=0, min_sum=0;
+        int max=N-1, max_sum=0;
+        
+        while(min<=max){
+            min_sum=min_sum+candies[min];
+            min++;
+            max=max-K;
+        }
+        
+        min=0;
+        max=N-1;
+        
+        while(min<=max){
+            max_sum=max_sum+candies[max];
+            min=min+K;
+            max--;
+        }
+        
+        vector<int> ans;
+        ans.push_back(min_sum);
+        ans.push_back(max_sum);
+        return ans;
+        
+        
+    }
